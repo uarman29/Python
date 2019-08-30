@@ -40,6 +40,48 @@ def scoreDisplay(score):
     text = style.render("Score: "+str(score), True, BLACK)
     gameDisplay.blit(text,(0,0))
 
+def button(button_left,button_top,button_width,button_height,text,starting_color,active_color,action):
+    mouse_position = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+
+    smalltext = pygame.font.Font("freesansbold.ttf", 20)
+    text_surface = smalltext.render(text, True, BLACK)
+    text_rect = text_surface.get_rect()
+    text_rect.center = (button_left + button_width/2, button_top + button_height/2)
+
+    if button_left + button_width >= mouse_position[0] >= button_left and button_top + button_height >= mouse_position[1] >= button_height:
+        drawRect(button_left, button_top, button_width, button_height, active_color)
+
+        if click[0] == 1 and action != None:
+            action()
+    else:
+        drawRect(button_left, button_top, button_width, button_height, starting_color)
+
+    gameDisplay.blit(text_surface, text_rect)
+
+def gameIntro():
+    intro = True
+
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                intro = False
+                pygame.quit()
+                quit()
+
+        largeStyle = pygame.font.Font("freesansbold.ttf", 115)
+        text_surface = largeStyle.render("RACE CAR", True, BLACK)
+        text_rect = text_surface.get_rect()
+        text_rect.center = (display_width / 2, display_height / 2)
+        gameDisplay.fill(WHITE)
+        gameDisplay.blit(text_surface, text_rect)
+
+        button(150,450,100,50,"START!",(0,200,0),(0,255,0),gameLoop)
+        button(550, 450, 100, 50, "ABOUT", (200,0, 0), (255,0, 0),None)
+
+        pygame.display.update()
+        clock.tick(15)
+
 def gameLoop():
     crashed = False
     x = (display_width*.45)
@@ -106,4 +148,4 @@ def gameLoop():
     pygame.quit()
     quit()
 
-gameLoop()
+gameIntro()
