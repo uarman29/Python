@@ -1,5 +1,6 @@
 import pygame
 import time
+import random
 
 pygame.init()
 
@@ -14,8 +15,8 @@ WHITE = (255, 255, 255)
 clock = pygame.time.Clock()
 carImg = pygame.image.load("car.png")
 
-car_width = 100
-car_height = 125
+car_width = 60
+car_height = 114
 
 
 def placeCar(x,y):
@@ -28,12 +29,31 @@ def messageDisplay(text):
     text_rect.center = (display_width/2, display_height/2)
     gameDisplay.blit(text_surface, text_rect)
 
+#def makeRect(left, top, width, height):
+#    return pygame.rect(left,top,width,height)
+
+def drawRect(left, top, width, height, color):
+    pygame.draw.rect(gameDisplay, color, [left, top, width, height])
+
+def laneManker():
+    laneNumber = display_width/8
+
+
 def gameLoop():
     crashed = False
     x = (display_width*.45)
-    y = (display_height*.45)
-    x_change = 0
-    y_change = 0
+    y = (display_height*.75)
+    current_direction = 0
+    current_lane = 1
+    num_lanes = 8
+    lane_width = 100
+
+    rect_lane = random.randrange(0, num_lanes)
+    rect_startx = rect_lane * lane_width
+    rect_starty = -200
+    rect_width = 100
+    rect_height = 100
+    rect_speed = 7
 
     while not crashed:
         for event in pygame.event.get():
@@ -42,41 +62,44 @@ def gameLoop():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    x_change = -5
+                    current_direction = -1
                 elif event.key == pygame.K_RIGHT:
-                    x_change = 5
-                elif event.key == pygame.K_UP:
-                    y_change = -5
-                elif event.key == pygame.K_DOWN:
-                    y_change = 5
+                    current_direction = 1
 
             if event.type == pygame.KEYUP:
-                if (x_change == -5 and event.key == pygame.K_LEFT) or (x_change == 5 and event.key == pygame.K_RIGHT):
-                    x_change = 0
-                if (y_change == -5 and event.key == pygame.K_UP) or (y_change == 5 and event.key == pygame.K_DOWN):
-                    y_change = 0
+                if (current_direction == -1 and event.key == pygame.K_LEFT) or (current_direction == 1 and event.key == pygame.K_RIGHT):
+                    current_lane += current_direction
 
+        if current_lane <= 0:
+            current_lane = 0
+        elif current_lane >= (num_lanes-1):
+            current_lane = (num_lanes-1)
 
-        x += x_change
-        y += y_change
-
-        if x < -20:
-            x = -20
-        elif x > display_width - car_width:
-            x = display_width - car_width
-
-        if y < 0:
-            y = 0
-        elif y > display_height - car_height:
-            y = display_height - car_height
+        center_of_lane = (current_lane * lane_width) + lane_width/2
+        center_of_car = car_width/2
+        x = center_of_lane - center_of_car
 
         gameDisplay.fill(WHITE)
         placeCar(x, y)
 
-        if x <= -20 or x >= display_width - car_width or y <= 0 or y >= display_height - car_height:
-            messageDisplay("GO BACK")
+        drawRect(rect_startx, rect_starty, rect_width, rect_height, BLACK)
+        rect_starty += rect_speed
+
+        for i in range(0, num_lanes):
+            pygame.draw.line(gameDisplay, BLACK, (lane_width * i, 0), (lane_width * i, display_height))
 
         pygame.display.update()
+
+        if current_lane == rect_lane and rect_starty+rect_height > y and rect_starty <= display_height:
+            messageDisplay("DEAD")
+            pygame.display.update()
+            crashed = True
+
+        if rect_starty >= display_height:
+            rect_lane = random.randrange(0, num_lanes)
+            rect_startx = rect_lane * lane_width
+            rect_starty = -200
+
         clock.tick(60)
 
     pygame.quit()
