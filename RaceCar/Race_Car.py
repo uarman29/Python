@@ -35,15 +35,15 @@ def messageDisplay(text):
 def drawRect(left, top, width, height, color):
     pygame.draw.rect(gameDisplay, color, [left, top, width, height])
 
-def laneManker():
-    laneNumber = display_width/8
-
+def scoreDisplay(score):
+    style = pygame.font.SysFont(None,25)
+    text = style.render("Score: "+str(score), True, BLACK)
+    gameDisplay.blit(text,(0,0))
 
 def gameLoop():
     crashed = False
     x = (display_width*.45)
     y = (display_height*.75)
-    current_direction = 0
     current_lane = 1
     num_lanes = 8
     lane_width = 100
@@ -53,7 +53,8 @@ def gameLoop():
     rect_starty = -200
     rect_width = 100
     rect_height = 100
-    rect_speed = 7
+    rect_speed = random.randrange(10, 20)
+    dodged = 0
 
     while not crashed:
         for event in pygame.event.get():
@@ -62,13 +63,9 @@ def gameLoop():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    current_direction = -1
+                    current_lane += -1
                 elif event.key == pygame.K_RIGHT:
-                    current_direction = 1
-
-            if event.type == pygame.KEYUP:
-                if (current_direction == -1 and event.key == pygame.K_LEFT) or (current_direction == 1 and event.key == pygame.K_RIGHT):
-                    current_lane += current_direction
+                    current_lane += 1
 
         if current_lane <= 0:
             current_lane = 0
@@ -81,13 +78,13 @@ def gameLoop():
 
         gameDisplay.fill(WHITE)
         placeCar(x, y)
-
-        drawRect(rect_startx, rect_starty, rect_width, rect_height, BLACK)
-        rect_starty += rect_speed
+        scoreDisplay(dodged)
 
         for i in range(0, num_lanes):
             pygame.draw.line(gameDisplay, BLACK, (lane_width * i, 0), (lane_width * i, display_height))
 
+        rect_starty += rect_speed
+        drawRect(rect_startx, rect_starty, rect_width, rect_height, BLACK)
         pygame.display.update()
 
         if current_lane == rect_lane and rect_starty+rect_height > y and rect_starty <= display_height:
@@ -99,7 +96,11 @@ def gameLoop():
             rect_lane = random.randrange(0, num_lanes)
             rect_startx = rect_lane * lane_width
             rect_starty = -200
+            rect_speed = random.randrange(10, 20)
+            dodged += 1
 
+        scoreDisplay(dodged)
+        pygame.display.update()
         clock.tick(60)
 
     pygame.quit()
