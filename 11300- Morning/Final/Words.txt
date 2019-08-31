@@ -1,0 +1,151 @@
+Snow
+Snow 2
+Snow 3
+Snow 4
+Ghost White
+White Smoke
+Gainsboro
+Floral White
+Old Lace
+Linen
+Antique White
+Antique White 2
+Antique White 3
+Antique White 4
+Papaya Whip
+Blanched Almond
+Bisque
+Bisque 2
+Bisque 3
+Bisque 4
+Peach Puff
+Peach Puff 2
+Peach Puff 3
+Peach Puff 4
+Navajo White
+Moccasin
+Cornsilk
+Cornsilk 2
+Cornsilk 3
+Cornsilk 4
+Ivory
+Ivory 2
+Ivory 3
+Ivory 4
+Lemon Chiffon
+Seashell
+Seashell 2
+Seashell 3
+Seashell 4
+Honeydew
+Honeydew 2
+Honeydew 3
+Honeydew 4
+Mint Cream
+Azure
+Alice Blue
+Lavender
+Lavender Blush
+Misty Rose
+White
+Black
+Dark Slate Gray
+Dim Gray
+Slate Gray
+Light Slate Gray
+Gray
+Light Gray
+Midnight Blue
+Navy
+Cornflower Blue
+Dark Slate Blue
+Slate Blue
+Medium Slate Blue
+Light Slate Blue
+Medium Blue
+Royal Blue
+Blue
+Dodger Blue
+Deep Sky Blue
+Sky Blue
+Light Sky Blue
+Steel Blue
+Light Steel Blue
+Light Blue
+Powder Blue
+Pale Turquoise
+Dark Turquoise
+Medium Turquoise
+Turquoise
+Cyan
+Light Cyan
+Cadet Blue
+Medium Aquamarine
+Aquamarine
+Dark Green
+Dark Olive Green
+Dark Sea Green
+Sea Green
+Medium Sea Green
+Light Sea Green
+Pale Green
+Spring Green
+Lawn Green
+Chartreuse
+Medium Spring Green
+Green Yellow
+Lime Green
+Yellow Green
+Forest Green
+Olive Drab
+Dark Khaki
+Khaki
+Pale Goldenrod
+Light Goldenrod Yellow
+Light Yellow
+Yellow
+Gold
+Light Goldenrod
+Goldenrod
+Dark Goldenrod
+Rosy Brown
+Indian Red
+Saddle Brown
+Sienna
+Peru
+Burlywood
+Beige
+Wheat
+Sandy Brown
+Tan
+Chocolate
+Firebrick
+Brown
+Dark Salmon
+Salmon
+Light Salmon
+Orange
+Dark Orange
+Coral
+Light Coral
+Tomato
+Orange Red
+Red
+Hot Pink
+Deep Pink
+Pink
+Light Pink
+Pale Violet Red
+Maroon
+Medium Violet Red
+Violet Red
+Violet
+Plum
+Orchid
+Medium Orchid
+Dark Orchid
+Dark Violet
+Blue Violet
+Purple
+Medium Purple
+Thistle
