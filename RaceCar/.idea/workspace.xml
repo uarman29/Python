@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aaadb3eb-12fb-4fd3-b8d6-4dc2bd57e094" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Race_Car.py" beforeDir="false" afterPath="$PROJECT_DIR$/Race_Car.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scores.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,31 +12,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Race_Car.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="47" column="54" lean-forward="true" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/pygametest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="107">
-              <caret line="434" column="21" lean-forward="true" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="21" />
+              <caret line="434" column="21" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Snake/Snake1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="102">
+              <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -69,9 +57,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="622" />
-    <option name="y" value="28" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="643" />
+    <option name="y" value="166" />
     <option name="width" value="734" />
     <option name="height" value="867" />
   </component>
@@ -166,14 +154,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06911142" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06840621" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33378196" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33378196" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -189,11 +176,12 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pygametest.py" />
-    <entry file="file://$PROJECT_DIR$/../Snake/Snake1.py">
+    <entry file="file://$PROJECT_DIR$/Race_Car.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="2941">
+          <caret line="173" column="38" lean-forward="true" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -201,16 +189,16 @@
     <entry file="file://$USER_HOME$/Desktop/pygametest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
-          <caret line="434" column="21" lean-forward="true" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="21" />
+          <caret line="434" column="21" selection-start-line="434" selection-start-column="21" selection-end-line="434" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Race_Car.py">
+    <entry file="file://$PROJECT_DIR$/../Snake/Snake1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="47" column="54" lean-forward="true" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

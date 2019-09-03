@@ -2,7 +2,7 @@ from pygame.locals import *
 import pygame
 import time
 
-
+##SNAKE
 class Player:
     x = 0
     y = 0
