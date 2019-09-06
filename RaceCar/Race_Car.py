@@ -20,6 +20,7 @@ car_height = 114
 pause = False
 
 
+
 def placeCar(x,y):
     gameDisplay.blit(carImg,(x,y))
 
@@ -30,15 +31,6 @@ def messageDisplay(text):
     text_rect.center = (display_width/2, display_height/2)
     gameDisplay.blit(text_surface, text_rect)
 
-class Rectangle:
-    def __init__(self,left,top,width,height,x,y,speed):
-        self.left = left
-        self.top = top
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-        self.speed = speed
 
 def drawRect(left, top, width, height, color):
     pygame.draw.rect(gameDisplay, color, [left, top, width, height])
@@ -100,9 +92,9 @@ def gameIntro():
         pygame.display.update()
         clock.tick(15)
 
-def crash(dodged):
+def crash(score):
     with open("scores.txt","a+") as f:
-        f.write("\n"+str(dodged))
+        f.write("\n"+str(score))
     crashed = True
     largeStyle = pygame.font.Font("freesansbold.ttf", 115)
     text_surface = largeStyle.render("Game Over", True, BLACK)
@@ -110,7 +102,7 @@ def crash(dodged):
     text_rect.center = (display_width / 2, (display_height / 2)-60)
     gameDisplay.blit(text_surface, text_rect)
     largeStyle = pygame.font.Font("freesansbold.ttf", 75)
-    text_surface = largeStyle.render("Score: " + str(dodged), True, BLACK)
+    text_surface = largeStyle.render("Score: " + str(score), True, BLACK)
     text_rect = text_surface.get_rect()
     text_rect.center = (display_width / 2, (display_height / 2)+100)
     gameDisplay.blit(text_surface, text_rect)
@@ -147,7 +139,16 @@ def paused():
         button(150,450,150,50,"CONTINUE",(0,200,0),(0,255,0),resume)
         button(550,450,150,50,"QUIT",(200,0,0),(255,0,0),gameIntro)
         pygame.display.update()
-        
+
+class Rectangle:
+    def __init__(self,x,y,width,height,speed,lane):
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+        self.speed = speed
+        self.lane = lane
+
 def gameLoop():
     gameOver = False
     x = (display_width*.45)
@@ -156,13 +157,15 @@ def gameLoop():
     num_lanes = 8
     lane_width = 100
 
+    start_time = time.time()
+    list_of_rectangles = []
     rect_lane = random.randrange(0, num_lanes)
     rect_startx = rect_lane * lane_width
     rect_starty = -200
     rect_width = 100
     rect_height = 100
-    rect_speed = 7
-    dodged = 0
+    rect_speed = 10
+    list_of_rectangles.append(Rectangle(rect_startx,rect_starty,rect_width,rect_height,rect_speed,rect_lane))
 
     while not gameOver:
         for event in pygame.event.get():
@@ -190,27 +193,39 @@ def gameLoop():
 
         gameDisplay.fill(WHITE)
         placeCar(x, y)
-        scoreDisplay(dodged)
+        scoreDisplay(int(time.time() - start_time)*10)
 
         for i in range(0, num_lanes):
             pygame.draw.line(gameDisplay, BLACK, (lane_width * i, 0), (lane_width * i, display_height))
 
-        rect_starty += rect_speed
-        drawRect(rect_startx, rect_starty, rect_width, rect_height, BLACK)
+        for i in range(0,len(list_of_rectangles)):
+            list_of_rectangles[i].y += list_of_rectangles[i].speed
+            drawRect(list_of_rectangles[i].x, list_of_rectangles[i].y, list_of_rectangles[i].width, list_of_rectangles[i].height, (150,0,0))
         pygame.display.update()
 
-        if current_lane == rect_lane and rect_starty+rect_height > y and rect_starty <= (y + car_height):
-            pygame.display.update()
-            crash(dodged)
+        for i in range(0,len(list_of_rectangles)):
+            if current_lane == list_of_rectangles[i].lane and list_of_rectangles[i].y + list_of_rectangles[i].height > y and list_of_rectangles[i].y <= (y + car_height):
+                pygame.display.update()
+                crash((int(time.time() - start_time) * 10))
 
-        if rect_starty >= display_height:
+        for i in range(0, len(list_of_rectangles)):
+            if list_of_rectangles[i].y >= display_height:
+                list_of_rectangles[i].lane = random.randrange(0, num_lanes)
+                list_of_rectangles[i].x = list_of_rectangles[i].lane * lane_width
+                list_of_rectangles[i].y = -200
+                list_of_rectangles[i].speed = 10 + int((time.time() - start_time) / 5)
+
+
+        if ((time.time() - start_time) > 10*len(list_of_rectangles)) and len(list_of_rectangles) < 6:
             rect_lane = random.randrange(0, num_lanes)
             rect_startx = rect_lane * lane_width
             rect_starty = -200
-            dodged += 1
-            rect_speed = 7 + int(dodged / 4)
+            rect_width = 100
+            rect_height = 100
+            rect_speed = 10 + int((time.time() - start_time) / 5)
+            list_of_rectangles.append(Rectangle(rect_startx, rect_starty, rect_width, rect_height, rect_speed, rect_lane))
 
-        scoreDisplay(dodged)
+        scoreDisplay(int(time.time() - start_time)*10)
         pygame.display.update()
         clock.tick(60)
 
